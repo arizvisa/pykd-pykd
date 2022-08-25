@@ -1127,7 +1127,7 @@
     <ClInclude Include="pysymengine.h" />
     <ClInclude Include="pytagged.h" />
     <ClInclude Include="pythreadstate.h" />
-    <ClInclude Include="pytypedvar.h" />
+    <!--ClInclude Include="pytypedvar.h" /-->
     <ClInclude Include="pytypeinfo.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -1230,7 +1230,7 @@
     <ClCompile Include="pymodule.cpp" />
     <ClCompile Include="pyprocess.cpp" />
     <ClCompile Include="pytagged.cpp" />
-    <ClCompile Include="pytypedvar.cpp" />
+    <!--ClCompile Include="pytypedvar.cpp" /-->
     <ClCompile Include="pytypeinfo.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

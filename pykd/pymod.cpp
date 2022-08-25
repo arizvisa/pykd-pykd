@@ -427,6 +427,7 @@ void pykd_init()
         "Return tuple (module_name, symbol_name, displacement) by virtual address" );
     python::def( "sizeof", pykd::getSymbolSize,
         "Return a size of the type or variable" );
+#if 0
     python::def("typedVarList", pykd::getTypedVarListByTypeName,
         "Return a list of the typedVar class instances. Each item represents an item of the linked list in the target memory" );
     python::def("typedVarList", pykd::getTypedVarListByType,
@@ -435,6 +436,7 @@ void pykd_init()
         "Return a list of the typedVar class instances. Each item represents an item of the counted array in the target memory" );
     python::def("typedVarArray", pykd::getTypedVarArrayByType,
         "Return a list of the typedVar class instances. Each item represents an item of the counted array in the target memory" );
+#endif
     python::def("containingRecord", pykd::containingRecordByName,
         "Return instance of the typedVar class. It's value are loaded from the target memory."
         "The start address is calculated by the same method as the standard macro CONTAINING_RECORD does" );
@@ -451,6 +453,7 @@ void pykd_init()
     python::def( "callFunctionByAddr", python::raw_function(pykd::callFunctionByOffset, 2) );
     python::def( "callFunctionRaw", python::raw_function(pykd::callFunctionRaw, 1) );
 
+#if 0
     python::def( "getTypeFromSource", &pykd::getTypeFromSource, getTypeFromSource_( python::args("sourceCode", "typeName", "compileOptions"),
         "Create typeInfo class from C/C++ source code") );
     python::def( "getTypeInfoProviderFromSource", &pykd::getTypeInfoProviderFromSource, getTypeInfoProviderFromSource_( python::args("sourceCode", "compileOptions"),
@@ -461,7 +464,7 @@ void pykd_init()
         "Create symbol provider for source code"));
     python::def("evalExpr", &pykd::evalExpr, evalExpr_(python::args("expression", "scope", "typeProvider"),
         "Evaluate C++ expression with typed information"));
-
+#endif
 
     // CPU registers
     python::def( "reg", pykd::getRegisterByName,
@@ -872,6 +875,7 @@ void pykd_init()
             "Return a size of the type or variable")
         .def("type", ModuleAdapter::getTypeByName,
             "Return typeInfo class by type name")
+#if 0
         .def("typedVar", ModuleAdapter::getTypedVarByAddr,
             "Return a typedVar class instance")
         .def("typedVar", ModuleAdapter::getTypedVarByName,
@@ -884,6 +888,7 @@ void pykd_init()
             "Return a list of the typedVar class instances. Each item represents an item of the linked list in the target memory")
         .def("typedVarArray", ModuleAdapter::getTypedVarArrayByTypeName,
             "Return a list of the typedVar class instances. Each item represents an item of the counted array in the target memory")
+#endif
         .def("containingRecord", ModuleAdapter::containingRecord,
             "Return instance of the typedVar class. It's value are loaded from the target memory."
             "The start address is calculated by the same method as the standard macro CONTAINING_RECORD does")
@@ -914,6 +919,7 @@ void pykd_init()
         .def("__contains__", ModuleAdapter::isContainedSymbol)
         .def( "__str__", &ModuleAdapter::print );
 
+#if 0
     python::class_<kdlib::TypeInfo, kdlib::TypeInfoPtr, python::bases<kdlib::NumConvertable>, boost::noncopyable >("typeInfo", "Class representing typeInfo", python::no_init)
         .def("__init__", python::make_constructor(pykd::getTypeInfoByName))
         .def("name", TypeInfoAdapter::getName,
@@ -1032,7 +1038,9 @@ void pykd_init()
         .def("__iszero__", TypeInfoAdapter::isZero )
 #endif
         ;
+#endif
 
+#if 0
     python::class_<TypedVarIterator>("typedVarIterator", "iterator for typedVar array", python::no_init)
         .def("__iter__", &TypedVarIterator::self)
 #if PY_VERSION_HEX < 0x03000000
@@ -1041,7 +1049,9 @@ void pykd_init()
         .def("__next__", &TypedVarIterator::next)
 #endif
         ;
+#endif
 
+#if 0
     python::class_<kdlib::TypedVar, kdlib::TypedVarPtr, python::bases<kdlib::NumConvertable>, boost::noncopyable >("typedVar",
         "Class of non-primitive type object, child class of typeClass. Data from target is copied into object instance", python::no_init  )
         .def("__init__", python::make_constructor(pykd::getTypedVarByName) )
@@ -1112,6 +1122,7 @@ void pykd_init()
         .def("__iszero__", TypedVarAdapter::isZero)
 #endif
         ;
+#endif
 
     python::class_<BaseTypesEnum>("baseTypes", "base types enumeration",  boost::python::no_init)
         .add_static_property( "UInt1B", &BaseTypesEnum::getUInt1B )
@@ -1315,6 +1326,7 @@ void pykd_init()
         .def( "__str__", DisasmAdapter::instruction );
 
 
+#if 0
     python::class_<TypeInfoProviderIterator>("typeInfoProviderIterator", "iterator for type provider", python::no_init)
         .def("__iter__", &TypeInfoProviderIterator::self)
 #if PY_VERSION_HEX < 0x03000000
@@ -1323,7 +1335,9 @@ void pykd_init()
         .def("__next__", &TypeInfoProviderIterator::next)
 #endif
         ;
+#endif
 
+#if 0
     python::class_<kdlib::TypeInfoProvider, kdlib::TypeInfoProviderPtr, boost::noncopyable>("typeInfoProvider",
         "Get abstract access to different type info sources", python::no_init)
         .def( "getTypeByName", TypeInfoProviderAdapter::getTypeByName,
@@ -1342,13 +1356,16 @@ void pykd_init()
         .def("__next__", &SymbolEnumeratorAdapter::next)
 #endif
         ;
+#endif
 
+#if 0
     python::class_<kdlib::SymbolProvider, kdlib::SymbolProviderPtr, boost::noncopyable>("symbolProvider",
         "Get abstract access to different type info sources", python::no_init)
         .def("iter", SymbolProviderAdapter::getIterWithMask, python::return_value_policy<python::manage_new_object>(),
             "Return type iterator with specified mask")
         .def("__iter__", SymbolProviderAdapter::getIter, python::return_value_policy<python::manage_new_object>())
         ;
+#endif
 
     python::enum_<kdlib::DebugCallbackResult>("eventResult", "Return value of event handler")
         .value("Proceed", kdlib::DebugCallbackProceed)
