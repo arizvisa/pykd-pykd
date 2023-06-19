@@ -1,2 +1,11 @@
 *.pyc
 .vs
+out
+packages/
+x64/
+Win32/
+UpgradeLog.htm
+.vscode
+*.aps
+*.user
+setup/

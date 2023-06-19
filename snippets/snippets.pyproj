@@ -21,6 +21,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug_3.11' ">
+    <OutputPath>bin\Debug_3.11\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="accessmask.py" />
     <Compile Include="avl.py" />

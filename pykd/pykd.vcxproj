@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\python.3.11.4\build\native\python.props" Condition="Exists('..\packages\python.3.11.4\build\native\python.props')" />
+  <Import Project="..\packages\pythonx86.3.11.4\build\native\python.props" Condition="Exists('..\packages\pythonx86.3.11.4\build\native\python.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug_2.7|x8">
       <Configuration>Debug_2.7</Configuration>
@@ -49,12 +51,28 @@
       <Configuration>Debug_3.9</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_3.11|Win32">
+      <Configuration>Debug_3.11</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_3.11|x64">
+      <Configuration>Debug_3.11</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release_2.7|Win32">
       <Configuration>Release_2.7</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release_2.7|x64">
       <Configuration>Release_2.7</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_3.11|Win32">
+      <Configuration>Release_3.11</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_3.11|x64">
+      <Configuration>Release_3.11</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release_3.5|Win32">
@@ -156,6 +174,14 @@
     <PythonVersion>3.9</PythonVersion>
     <LLVM_USE_CRT_DEBUG>MDd</LLVM_USE_CRT_DEBUG>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_3.11|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <PythonVersion>3.11</PythonVersion>
+    <LLVM_USE_CRT_DEBUG>MDd</LLVM_USE_CRT_DEBUG>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_2.7|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
@@ -202,6 +228,14 @@
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
     <PythonVersion>3.9</PythonVersion>
+    <LLVM_USE_CRT_DEBUG>MDd</LLVM_USE_CRT_DEBUG>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_3.11|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <PythonVersion>3.11</PythonVersion>
     <LLVM_USE_CRT_DEBUG>MDd</LLVM_USE_CRT_DEBUG>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_2.7|Win32'" Label="Configuration">
@@ -258,6 +292,15 @@
     <PythonVersion>3.9</PythonVersion>
     <LLVM_USE_CRT_RELEASE>MT</LLVM_USE_CRT_RELEASE>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_3.11|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <PythonVersion>3.11</PythonVersion>
+    <LLVM_USE_CRT_RELEASE>MT</LLVM_USE_CRT_RELEASE>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_2.7|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
@@ -312,6 +355,15 @@
     <PythonVersion>3.9</PythonVersion>
     <LLVM_USE_CRT_RELEASE>MT</LLVM_USE_CRT_RELEASE>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_3.11|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <PythonVersion>3.11</PythonVersion>
+    <LLVM_USE_CRT_RELEASE>MT</LLVM_USE_CRT_RELEASE>
+  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -333,6 +385,9 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_3.9|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_3.11|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_2.7|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -349,6 +404,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_3.9|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_3.11|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_2.7|Win32'" Label="PropertySheets">
@@ -369,6 +427,9 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_3.9|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_3.11|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_2.7|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -387,9 +448,10 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_3.9|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <PropertyGroup Label="UserMacros">
-    <NuGetPackageImportStamp>bb9fbdf7</NuGetPackageImportStamp>
-  </PropertyGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_3.11|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_2.7|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.pyd</TargetExt>
@@ -431,6 +493,14 @@
     <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_3.9|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+    <TargetName>$(ProjectName)</TargetName>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_3.11|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.pyd</TargetExt>
     <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
@@ -486,6 +556,14 @@
     <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_3.11|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+    <TargetName>$(ProjectName)</TargetName>
+    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_2.7|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <TargetExt>.pyd</TargetExt>
@@ -528,6 +606,13 @@
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_3.11|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <TargetName>$(ProjectName)</TargetName>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_2.7|x64'">
     <LinkIncremental>false</LinkIncremental>
     <TargetExt>.pyd</TargetExt>
@@ -564,6 +649,13 @@
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_3.9|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.pyd</TargetExt>
+    <TargetName>$(ProjectName)</TargetName>
+    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_3.11|x64'">
     <LinkIncremental>false</LinkIncremental>
     <TargetExt>.pyd</TargetExt>
     <TargetName>$(ProjectName)</TargetName>
@@ -703,6 +795,28 @@
       </Command>
     </CustomBuildStep>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_3.11|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;BOOST_PYTHON_STATIC_LIB;BOOST_PYTHON_NO_LIB;_DEBUG;_WINDOWS;_USRDLL;PYKD_EXPORTS;%(PreprocessorDefinitions);BOOST_PYTHON_NUMPY_INTERNAL</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\kdlibcpp\kdlib\include;$(SolutionDir)\packages\python.3.11.4\tools\Lib\site-packages\numpy\core\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <ModuleDefinitionFile>pykd.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(OutDir)..\Debug\targetapp.exe $(OutDir)</Command>
+    </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_2.7|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -814,6 +928,28 @@
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_3.9|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;BOOST_PYTHON_STATIC_LIB;BOOST_PYTHON_NO_LIB;_DEBUG;_WINDOWS;_USRDLL;PYKD_EXPORTS;%(PreprocessorDefinitions);BOOST_PYTHON_NUMPY_INTERNAL</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\kdlibcpp\kdlib\include;$(SolutionDir)\numpy\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <ModuleDefinitionFile>pykd.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(OutDir)..\Debug\targetapp.exe $(OutDir)</Command>
+    </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_3.11|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
@@ -973,6 +1109,29 @@
       <Command>copy $(OutDir)..\Debug\targetapp.exe $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_3.11|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;BOOST_PYTHON_STATIC_LIB;BOOST_PYTHON_NO_LIB;NDEBUG;_WINDOWS;_USRDLL;PYKD_EXPORTS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\kdlibcpp\kdlib\include;$(SolutionDir)\packages\python.3.11.4\tools\Lib\site-packages\numpy\core\include;</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>pykd.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(OutDir)..\Debug\targetapp.exe $(OutDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_2.7|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -1110,6 +1269,38 @@
     <PostBuildEvent>
       <Command>copy $(OutDir)..\Debug\targetapp.exe $(OutDir)</Command>
     </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_3.11|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;BOOST_PYTHON_STATIC_LIB;BOOST_PYTHON_NO_LIB;NDEBUG;_WINDOWS;_USRDLL;PYKD_EXPORTS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\kdlibcpp\kdlib\include;$(SolutionDir)\packages\python.3.11.4\tools\Lib\site-packages\numpy\core\include;</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>pykd.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(OutDir)..\Release\targetapp.exe $(OutDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(PythonVersion)'=='3.11'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(PythonInclude);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="dbgexcept.h" />
@@ -1251,36 +1442,51 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="$(SolutionDir)\packages\boost.1.67.0.0\build\boost.targets" Condition="Exists('$(SolutionDir)\packages\boost.1.67.0.0\build\boost.targets')" />
-    <Import Project="$(SolutionDir)\packages\boost_atomic-src.1.67.0.0\build\boost_atomic-src.targets" Condition="Exists('$(SolutionDir)\packages\boost_atomic-src.1.67.0.0\build\boost_atomic-src.targets')" />
-    <Import Project="$(SolutionDir)\packages\boost_chrono-src.1.67.0.0\build\boost_chrono-src.targets" Condition="Exists('$(SolutionDir)\packages\boost_chrono-src.1.67.0.0\build\boost_chrono-src.targets')" />
-    <Import Project="$(SolutionDir)\packages\boost_date_time-src.1.67.0.0\build\boost_date_time-src.targets" Condition="Exists('$(SolutionDir)\packages\boost_date_time-src.1.67.0.0\build\boost_date_time-src.targets')" />
-    <Import Project="$(SolutionDir)\packages\boost_regex-src.1.67.0.0\build\boost_regex-src.targets" Condition="Exists('$(SolutionDir)\packages\boost_regex-src.1.67.0.0\build\boost_regex-src.targets')" />
-    <Import Project="$(SolutionDir)\packages\boost_system-src.1.67.0.0\build\boost_system-src.targets" Condition="Exists('$(SolutionDir)\packages\boost_system-src.1.67.0.0\build\boost_system-src.targets')" />
-    <Import Project="$(SolutionDir)\packages\boost_thread-src.1.67.0.0\build\boost_thread-src.targets" Condition="Exists('$(SolutionDir)\packages\boost_thread-src.1.67.0.0\build\boost_thread-src.targets')" />
+    <Import Project="$(SolutionDir)\packages\boost.1.72.0.0\build\boost.targets" Condition="Exists('$(SolutionDir)\packages\boost.1.72.0.0\build\boost.targets')" />
+    <Import Project="$(SolutionDir)\packages\boost_atomic-src.1.72.0.0\build\boost_atomic-src.targets" Condition="Exists('$(SolutionDir)\packages\boost_atomic-src.1.72.0.0\build\boost_atomic-src.targets')" />
+    <Import Project="$(SolutionDir)\packages\boost_chrono-src.1.72.0.0\build\boost_chrono-src.targets" Condition="Exists('$(SolutionDir)\packages\boost_chrono-src.1.72.0.0\build\boost_chrono-src.targets')" />
+    <Import Project="$(SolutionDir)\packages\boost_date_time-src.1.72.0.0\build\boost_date_time-src.targets" Condition="Exists('$(SolutionDir)\packages\boost_date_time-src.1.72.0.0\build\boost_date_time-src.targets')" />
+    <Import Project="$(SolutionDir)\packages\boost_regex-src.1.72.0.0\build\boost_regex-src.targets" Condition="Exists('$(SolutionDir)\packages\boost_regex-src.1.72.0.0\build\boost_regex-src.targets')" />
+    <Import Project="$(SolutionDir)\packages\boost_system-src.1.72.0.0\build\boost_system-src.targets" Condition="Exists('$(SolutionDir)\packages\boost_system-src.1.72.0.0\build\boost_system-src.targets')" />
+    <Import Project="$(SolutionDir)\packages\boost_thread-src.1.72.0.0\build\boost_thread-src.targets" Condition="Exists('$(SolutionDir)\packages\boost_thread-src.1.72.0.0\build\boost_thread-src.targets')" />
     <Import Project="$(SolutionDir)\packages\Python27.2.7.6\build\python27.targets" Condition="'$(PythonVersion)'=='2.7' AND Exists('$(SolutionDir)\packages\Python27.2.7.6\build\python27.targets')" />
     <Import Project="$(SolutionDir)\packages\Python35.3.5.1.1\build\python35.targets" Condition="'$(PythonVersion)'=='3.5' AND Exists('$(SolutionDir)\packages\Python35.3.5.1.1\build\python35.targets')" />
     <Import Project="$(SolutionDir)\packages\Python36.3.6.0\build\python36.targets" Condition="'$(PythonVersion)'=='3.6' AND Exists('$(SolutionDir)\packages\Python36.3.6.0\build\python36.targets')" />
     <Import Project="$(SolutionDir)\packages\Python37.1.0.0.1\build\python37.targets" Condition="'$(PythonVersion)'=='3.7' AND Exists('$(SolutionDir)\packages\Python37.1.0.0.1\build\python37.targets')" />
     <Import Project="$(SolutionDir)\packages\Python38.3.8.0\build\python38.targets" Condition="'$(PythonVersion)'=='3.8' AND Exists('$(SolutionDir)\packages\Python38.3.8.0\build\python38.targets')" />
     <Import Project="$(SolutionDir)\packages\Python39.3.9.0\build\python39.targets" Condition="'$(PythonVersion)'=='3.9' AND Exists('$(SolutionDir)\packages\Python39.3.9.0\build\python39.targets')" />
+    <Import Project="..\packages\boost.1.72.0.0\build\boost.targets" Condition="Exists('..\packages\boost.1.72.0.0\build\boost.targets')" />
+    <Import Project="..\packages\boost_atomic-src.1.72.0.0\build\boost_atomic-src.targets" Condition="Exists('..\packages\boost_atomic-src.1.72.0.0\build\boost_atomic-src.targets')" />
+    <Import Project="..\packages\boost_chrono-src.1.72.0.0\build\boost_chrono-src.targets" Condition="Exists('..\packages\boost_chrono-src.1.72.0.0\build\boost_chrono-src.targets')" />
+    <Import Project="..\packages\boost_date_time-src.1.72.0.0\build\boost_date_time-src.targets" Condition="Exists('..\packages\boost_date_time-src.1.72.0.0\build\boost_date_time-src.targets')" />
+    <Import Project="..\packages\boost_regex-src.1.72.0.0\build\boost_regex-src.targets" Condition="Exists('..\packages\boost_regex-src.1.72.0.0\build\boost_regex-src.targets')" />
+    <Import Project="..\packages\boost_system-src.1.72.0.0\build\boost_system-src.targets" Condition="Exists('..\packages\boost_system-src.1.72.0.0\build\boost_system-src.targets')" />
+    <Import Project="..\packages\boost_thread-src.1.72.0.0\build\boost_thread-src.targets" Condition="Exists('..\packages\boost_thread-src.1.72.0.0\build\boost_thread-src.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\packages\boost.1.67.0.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\boost.1.67.0.0\build\boost.targets'))" />
-    <Error Condition="!Exists('$(SolutionDir)\packages\boost_atomic-src.1.67.0.0\build\boost_atomic-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\boost_atomic-src.1.67.0.0\build\boost_atomic-src.targets'))" />
-    <Error Condition="!Exists('$(SolutionDir)\packages\boost_chrono-src.1.67.0.0\build\boost_chrono-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\boost_chrono-src.1.67.0.0\build\boost_chrono-src.targets'))" />
-    <Error Condition="!Exists('$(SolutionDir)\packages\boost_date_time-src.1.67.0.0\build\boost_date_time-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\boost_date_time-src.1.67.0.0\build\boost_date_time-src.targets'))" />
-    <Error Condition="!Exists('$(SolutionDir)\packages\boost_regex-src.1.67.0.0\build\boost_regex-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\boost_regex-src.1.67.0.0\build\boost_regex-src.targets'))" />
-    <Error Condition="!Exists('$(SolutionDir)\packages\boost_system-src.1.67.0.0\build\boost_system-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\boost_system-src.1.67.0.0\build\boost_system-src.targets'))" />
-    <Error Condition="!Exists('$(SolutionDir)\packages\boost_thread-src.1.67.0.0\build\boost_thread-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\boost_thread-src.1.67.0.0\build\boost_thread-src.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\packages\boost.1.72.0.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\boost.1.72.0.0\build\boost.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\packages\boost_atomic-src.1.72.0.0\build\boost_atomic-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\boost_atomic-src.1.72.0.0\build\boost_atomic-src.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\packages\boost_chrono-src.1.72.0.0\build\boost_chrono-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\boost_chrono-src.1.72.0.0\build\boost_chrono-src.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\packages\boost_date_time-src.1.72.0.0\build\boost_date_time-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\boost_date_time-src.1.72.0.0\build\boost_date_time-src.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\packages\boost_regex-src.1.72.0.0\build\boost_regex-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\boost_regex-src.1.72.0.0\build\boost_regex-src.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\packages\boost_system-src.1.72.0.0\build\boost_system-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\boost_system-src.1.72.0.0\build\boost_system-src.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\packages\boost_thread-src.1.72.0.0\build\boost_thread-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\boost_thread-src.1.72.0.0\build\boost_thread-src.targets'))" />
     <Error Condition="!Exists('$(SolutionDir)\packages\Python27.2.7.6\build\python27.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\Python27.2.7.6\build\python27.targets'))" />
     <Error Condition="!Exists('$(SolutionDir)\packages\Python35.3.5.1.1\build\python35.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\Python35.3.5.1\build\python35.targets'))" />
     <Error Condition="!Exists('$(SolutionDir)\packages\Python36.3.6.0\build\python36.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\Python36.3.6.0\build\python36.targets')" />
     <Error Condition="!Exists('$(SolutionDir)\packages\Python37.1.0.0.1\build\python37.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\Python37.1.0.0.1\build\python37.targets')" />
     <Error Condition="!Exists('$(SolutionDir)\packages\Python38.3.8.0\build\python38.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\Python38.3.8.0\build\python38.targets')" />
     <Error Condition="!Exists('$(SolutionDir)\packages\Python39.3.9.0\build\python39.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\Python39.3.9.0\build\python39.targets')" />
+    <Error Condition="!Exists('..\packages\boost.1.72.0.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost.1.72.0.0\build\boost.targets'))" />
+    <Error Condition="!Exists('..\packages\boost_atomic-src.1.72.0.0\build\boost_atomic-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_atomic-src.1.72.0.0\build\boost_atomic-src.targets'))" />
+    <Error Condition="!Exists('..\packages\boost_chrono-src.1.72.0.0\build\boost_chrono-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_chrono-src.1.72.0.0\build\boost_chrono-src.targets'))" />
+    <Error Condition="!Exists('..\packages\boost_date_time-src.1.72.0.0\build\boost_date_time-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_date_time-src.1.72.0.0\build\boost_date_time-src.targets'))" />
+    <Error Condition="!Exists('..\packages\boost_regex-src.1.72.0.0\build\boost_regex-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_regex-src.1.72.0.0\build\boost_regex-src.targets'))" />
+    <Error Condition="!Exists('..\packages\boost_system-src.1.72.0.0\build\boost_system-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_system-src.1.72.0.0\build\boost_system-src.targets'))" />
+    <Error Condition="!Exists('..\packages\boost_thread-src.1.72.0.0\build\boost_thread-src.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_thread-src.1.72.0.0\build\boost_thread-src.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\packages\python.3.11.4\build\native\python.props')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\python.3.11.4\build\native\python.props'))" />
   </Target>
 </Project>
